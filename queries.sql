@@ -29,3 +29,18 @@ SELECT * FROM animals WHERE weight_kg >= 10.4 AND weight_kg <= 17.3;
 UPDATE animals SET species='digimon' WHERE name LIKE '%mon';
 -- Update the animals table by setting the species column to pokemon for all animals that don't have species already set.
 UPDATE animals SET species='pokemon' WHERE species = '';
+
+-- How many animals are there?
+SELECT COUNT(*) FROM animals;
+-- How many animals have never tried to escape?
+SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+-- What is the average weight of animals?
+SELECT AVG(weight_kg) FROM animals;
+-- Who escapes the most, neutered or not neutered animals?
+SELECT COUNT(*) FROM animals WHERE escape_attempts > 0 AND neutered = true;
+SELECT COUNT(*) FROM animals WHERE escape_attempts > 0 AND neutered = false;
+-- What is the minimum and maximum weight of each type of animal?
+SELECT MIN(weight_kg) FROM animals;
+SELECT MAX(weight_kg) FROM animals;
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
