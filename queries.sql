@@ -32,15 +32,34 @@ UPDATE animals SET species='pokemon' WHERE species = '';
 
 -- How many animals are there?
 SELECT COUNT(*) FROM animals;
+
 -- How many animals have never tried to escape?
 SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+
 -- What is the average weight of animals?
 SELECT AVG(weight_kg) FROM animals;
+
 -- Who escapes the most, neutered or not neutered animals?
 SELECT COUNT(*) FROM animals WHERE escape_attempts > 0 AND neutered = true;
 SELECT COUNT(*) FROM animals WHERE escape_attempts > 0 AND neutered = false;
+
 -- What is the minimum and maximum weight of each type of animal?
 SELECT MIN(weight_kg) FROM animals;
 SELECT MAX(weight_kg) FROM animals;
+
 -- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
 SELECT AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
+
+-- Update operation
+UPDATE animals SET species = 'unspecified';
+SELECT species FROM animals;
+
+-- Delete operation
+DELETE FROM animals;
+SELECT COUNT(*) FROM animals;
+DELETE FROM animals WHERE date_of_birth >= '2022-01-01';
+
+-- Savepoint and update operation
+SAVEPOINT SP1;
+UPDATE animals SET weight_kg = weight_kg * -1;
+UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
