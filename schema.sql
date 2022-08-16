@@ -8,3 +8,7 @@ CREATE TABLE animals (
     neutered BOOLEAN,
     weight_kg FLOAT(2),
 );
+
+-- Add new column to table
+ALTER TABLE animals
+ADD specis VARCHAR(150);
