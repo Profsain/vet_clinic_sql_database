@@ -38,8 +38,43 @@ UPDATE animals SET owner_id = 4 WHERE name IN ('Charmander', 'Squirtle', 'Blosso
 UPDATE animals SET owner_id = 5 WHERE name IN ('Angemon', 'Boarmon');
 
 -- Insert record into vets table
-INSERT INTO vets 
+INSERT INTO vets (name, age, date_of_graduation)
 VALUES('Vet William Tatcher', 45, '2000-04-23'),
       ('Vet Maisy Smith', 26, '2019-01-17'),
       ('Vet Stephanie Mendez', 26, '1981-05-04'),
       ('Vet Jack Harkness', 38, '2008-06-18');
+
+-- Update specializations
+INSERT INTO specializations(vet_fk_id, species_fk_id)
+VALUES(1, 1);
+INSERT INTO specializations(vet_fk_id, species_fk_id)
+VALUES(2, 2);
+INSERT INTO specializations(vet_fk_id, species_fk_id)
+VALUES(2, 1);
+INSERT INTO specializations(vet_fk_id, species_fk_id)
+VALUES(4, 2);
+
+-- Update visits
+INSERT INTO visits(animals_fk_id, vets_fk_id, visit_date)
+VALUES(1, 1, '2020-05-24');
+INSERT INTO visits(animals_fk_id, vets_fk_id, visit_date)
+VALUES(1, 3, '2020-06-22');
+INSERT INTO visits(animals_fk_id, vets_fk_id, visit_date)
+VALUES(2, 4, '2021-02-02'),
+      (3, 2, '2020-01-05'),
+      (3, 2, '2020-03-08'),
+      (3, 2, '2020-05-14'),
+      (4, 3, '2021-05-04'),
+      (5, 4, '2021-02-24'),
+      (6, 2, '2019-12-21'),
+      (6, 1, '2020-08-10'),
+      (6, 2, '2021-04-07'),
+      (7, 3, '2019-09-29'),
+      (8, 4, '2020-10-03'),
+      (8, 4, '2020-11-04'),
+      (11, 2, '2019-01-24'),
+      (11, 2, '2019-05-15'),
+      (11, 2, '2020-02-27'),
+      (11, 2, '2020-08-03'),
+      (9, 3, '2020-05-24'),
+      (9, 1, '2021-01-11');
