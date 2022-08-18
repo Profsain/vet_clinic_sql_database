@@ -63,3 +63,47 @@ DELETE FROM animals WHERE date_of_birth >= '2022-01-01';
 SAVEPOINT SP1;
 UPDATE animals SET weight_kg = weight_kg * -1;
 UPDATE animals SET weight_kg = weight_kg * -1 WHERE weight_kg < 0;
+
+-- Project part 3
+
+-- What animals belong to Melody Pond?
+SELECT animals.name, owners.full_name As Owner 
+FROM animals 
+JOIN owners ON animals.owner_id = owners.id
+WHERE animals.owner_id = 4;
+
+-- List of all animals that are pokemon (their type is Pokemon).
+SELECT animals.name, species.name As Species
+FROM animals
+JOIN species ON animals.species_id = species.id
+WHERE animals.species_id = 1;
+
+-- List all owners and their animals, remember to include those that don't own any animal.
+SELECT owners.full_name, animals.name
+FROM owners
+LEFT JOIN animals ON owners.id = animals.owner_id;
+
+-- How many animals are there per species?
+SELECT species.name, COUNT(animals.species_id)
+FROM animals
+JOIN species ON animals.species_id = species.id
+GROUP BY species.name;
+
+-- List all Digimon owned by Jennifer Orwell.
+SELECT owners.full_name, animals.name
+FROM animals
+LEFT JOIN owners ON owners.id = animals.owner_id
+WHERE owners.id = 2 AND animals.owner_id = 2;
+
+-- List all animals owned by Dean Winchester that haven't tried to escape.
+SELECT owners.full_name AS Owner, animals.name
+FROM animals
+JOIN owners ON animals.owner_id = (SELECT id FROM owners WHERE owners.full_name = 'Dean Winchester')
+WHERE escape_attempts = 0;
+
+-- Who owns the most animals?
+SELECT owners.full_name, COUNT(animals.owner_id) AS animal_count
+FROM animals
+JOIN owners ON owners.id = animals.owner_id
+GROUP BY owners.full_name
+ORDER BY animal_count DESC LIMIT 1;
