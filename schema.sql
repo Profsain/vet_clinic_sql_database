@@ -46,18 +46,18 @@ CREATE TABLE vets (
     name VARCHAR(250),
     age INT,
     date_of_graduation DATE,
-    PRIMARY KEY(id),
+    PRIMARY KEY(id)
 );
 
 -- M:M relationship table vet:species
 CREATE TABLE specializations (
-    vet_fk_id INT REFERENCE vets(id),
-    species_fk_id INT REFERENCE specis(id)
+    vet_fk_id INT REFERENCES vets(id),
+    species_fk_id INT REFERENCES species(id)
 );
 
 -- M:M relationship animals:vets
 CREATE TABLE visits (
-    animals_fk_id INT REFERENCE animals(id),
-    vets_fk_id INT REFERENCE vets(id),
+    animals_fk_id INT REFERENCES animals(id),
+    vets_fk_id INT REFERENCES vets(id),
     visit_date DATE
 );

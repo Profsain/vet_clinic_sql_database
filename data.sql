@@ -37,3 +37,9 @@ UPDATE animals SET owner_id = 3 WHERE name IN ('Devimon', 'Plantmon');
 UPDATE animals SET owner_id = 4 WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
 UPDATE animals SET owner_id = 5 WHERE name IN ('Angemon', 'Boarmon');
 
+-- Insert record into vets table
+INSERT INTO vets 
+VALUES('Vet William Tatcher', 45, '2000-04-23'),
+      ('Vet Maisy Smith', 26, '2019-01-17'),
+      ('Vet Stephanie Mendez', 26, '1981-05-04'),
+      ('Vet Jack Harkness', 38, '2008-06-18');
