@@ -182,3 +182,7 @@ JOIN vets ON vets.id = visits.vets_fk_id AND vets.name = 'Vet Maisy Smith'
 GROUP BY species.name
 ORDER BY COUNT(species_id) DESC
 LIMIT 1;
+
+
+
+
