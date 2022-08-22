@@ -182,3 +182,20 @@ JOIN vets ON vets.id = visits.vets_fk_id AND vets.name = 'Vet Maisy Smith'
 GROUP BY species.name
 ORDER BY COUNT(species_id) DESC
 LIMIT 1;
+
+
+
+/* PROJECT WK 2 DAY 1 */
+
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits WHERE animals_fk_id = 4;
+
+EXPLAIN ANALYZE SELECT * FROM visits WHERE vets_fk_id = 2;
+
+EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
+
+-- Create index to improve performance
+CREATE INDEX animals_id_idx ON visits(animals_fk_id ASC);
+
+CREATE INDEX vets_id_idx ON visits(vets_fk_id ASC);
+
+CREATE INDEX email_idx ON owners(email ASC);

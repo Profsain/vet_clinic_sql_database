@@ -75,3 +75,11 @@ VALUES((SELECT id FROM animals WHERE animals.name = 'Agumon'), (SELECT id FROM v
       ((SELECT id FROM animals WHERE animals.name = 'Boarmon'), (SELECT id FROM vets WHERE vets.name = 'Vet Maisy Smith'), '2020-08-03'),
       ((SELECT id FROM animals WHERE animals.name = 'Blossom'), (SELECT id FROM vets WHERE vets.name = 'Vet Stephanie Mendez'), '2020-05-24'),
       ((SELECT id FROM animals WHERE animals.name = 'Blossom'), (SELECT id FROM vets WHERE vets.name = 'Vet William Tatcher'), '2021-01-11');
+
+-- Part 6
+-- Auto generate record insert
+-- This will add 3.594.280 visits considering you have 10 animals, 4 vets
+INSERT INTO visits (animals_fk_id, vets_fk_id, visit_date) SELECT * FROM (SELECT id FROM animals) animal_ids, (SELECT id FROM vets) vets_ids, generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') visit_timestamp;
+
+-- This will add 3.594.280 visits considering you have 10 animals, 4 vets, and it will use around ~87.000 timestamps (~4min approx.)
+INSERT INTO owners (full_name, email) SELECT 'Owner ' || GENERATE_SERIES(1,2500000), 'owner_' || GENERATE_SERIES(1,2500000) || '@mail.com';
