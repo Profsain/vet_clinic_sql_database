@@ -193,4 +193,9 @@ EXPLAIN ANALYZE SELECT * FROM visits WHERE vets_fk_id = 2;
 
 EXPLAIN ANALYZE SELECT * FROM owners WHERE email = 'owner_18327@mail.com';
 
+-- Create index to improve performance
+CREATE INDEX animals_id_idx ON visits(animals_fk_id ASC);
 
+CREATE INDEX vets_id_idx ON visits(vets_fk_id ASC);
+
+CREATE INDEX email_idx ON owners(email ASC);
